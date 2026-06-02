@@ -1,6 +1,18 @@
 # World Cup Lab
 
-An explainable 2026 World Cup analysis lab built with Next.js, TypeScript, and Tailwind CSS.
+An open-source project exploring World Cup history, current team form, and the data behind football rankings.
+Live site: https://worldcuplab.bankeajayi.com
+
+## What is this?
+
+World Cup Lab is a fun side project that combines historical World Cup performance with recent international form.
+
+The goal is not to predict the future. The goal is to explore how football rankings are built, how assumptions affect results, and how different signals can be combined into transparent, explainable scores.
+
+## Disclaimer
+
+This project is for fun and education. It is not certainty, betting advice, or a claim that historical
+or current-form indexes can predict World Cup outcomes.
 
 The project currently shows two non-predictive indexes:
 
@@ -9,7 +21,7 @@ The project currently shows two non-predictive indexes:
 
 It does **not** generate prediction probabilities, use machine learning, or provide betting advice.
 
-![World Cup Prediction Lab homepage preview](docs/screenshots/homepage-preview.svg)
+![World Cup Lab homepage preview](docs/screenshots/homepage-preview.svg)
 
 ## Features
 
@@ -17,7 +29,7 @@ It does **not** generate prediction probabilities, use machine learning, or prov
 - Team identity normalization for historical predecessor/successor cases.
 - Phase 1 Current Strength Index from recent match form, goal difference, and 2026 host status.
 - Side-by-side historical/current comparison view.
-- Playful local-state bracket picks.
+- Interactive tournament bracket picks.
 - Reproducible data pipelines.
 - Data validation and correction reports.
 - Raw data kept separate from processed outputs.
@@ -35,7 +47,7 @@ It does **not** generate prediction probabilities, use machine learning, or prov
 
 ```bash
 git clone <your-repo-url>
-cd world-cup-prediction-lab
+cd world-cup-lab
 npm ci
 npm run dev
 ```
@@ -241,8 +253,3 @@ Current validation status:
 - Run `npm ci` after cloning.
 - Run `npm run build:features` and `npm run build:current-strength` to regenerate data.
 - Run `npm run lint` and `npm run build` before publishing.
-
-## Disclaimer
-
-This project is for fun and education. It is not certainty, betting advice, or a claim that historical
-or current-form indexes can predict World Cup outcomes.
