@@ -3,8 +3,9 @@ import { AnalyticsPageViews } from "@/components/AnalyticsPageViews";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "World Cup Prediction Lab",
-  description: "An explainable 2026 World Cup prediction model weekend project.",
+  title: "World Cup Lab",
+  description:
+    "An open-source project exploring World Cup history, current team form, and the data behind football rankings.",
 };
 
 export default function RootLayout({
