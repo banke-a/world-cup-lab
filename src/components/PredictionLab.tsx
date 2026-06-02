@@ -83,10 +83,17 @@ export function PredictionLab() {
   const [savedPredictions, setSavedPredictions] = useState<UserPrediction[]>([]);
   const [activeScatterTeam, setActiveScatterTeam] = useState<string | null>(null);
   const [hasTrackedMethodologyExpanded, setHasTrackedMethodologyExpanded] = useState(false);
+  const [showAllHistoricalTeams, setShowAllHistoricalTeams] = useState(false);
+  const [showAllCurrentTeams, setShowAllCurrentTeams] = useState(false);
 
   const teamNames = rankedTeams.map((team) => team.team_name);
   const topTeam = rankedTeams[0];
   const scatterTeams = rankedTeams.filter((team) => team.current_strength_score !== null);
+  const currentStrengthTableTeams = rankedTeams.slice(0, 20);
+  const visibleHistoricalTeams = showAllHistoricalTeams ? rankedTeams : rankedTeams.slice(0, 10);
+  const visibleCurrentTeams = showAllCurrentTeams
+    ? currentStrengthTableTeams
+    : currentStrengthTableTeams.slice(0, 10);
   const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL;
 
   function updateSemiFinalist(index: number, value: string) {
@@ -223,7 +230,7 @@ export function PredictionLab() {
                 </tr>
               </thead>
               <tbody>
-                {rankedTeams.map((team) => (
+                {visibleHistoricalTeams.map((team) => (
                   <tr key={team.team_id} className="border-t border-black/8">
                     <td className="px-3 py-4 font-semibold sm:px-4">{team.rank}</td>
                     <td className="px-3 py-4 sm:px-4">
@@ -254,6 +261,15 @@ export function PredictionLab() {
               </tbody>
             </table>
           </div>
+        </div>
+        <div className="mt-4 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setShowAllHistoricalTeams((current) => !current)}
+            className="min-h-11 rounded-md border border-black/15 bg-white px-4 py-2.5 text-sm font-semibold text-[#174b3f] transition hover:border-[#2f6d5f] hover:bg-[#eef5ee]"
+          >
+            {showAllHistoricalTeams ? "Show fewer" : "Show all teams"}
+          </button>
         </div>
       </section>
 
@@ -291,7 +307,7 @@ export function PredictionLab() {
                   </tr>
                 </thead>
                 <tbody>
-                  {rankedTeams.slice(0, 20).map((team) => (
+                  {visibleCurrentTeams.map((team) => (
                     <tr key={team.team_id} className="border-t border-black/8">
                       <td className="px-3 py-4 sm:px-4">
                         <div className="font-semibold">{team.team_name}</div>
@@ -319,6 +335,15 @@ export function PredictionLab() {
               </table>
             </div>
           </div>
+          <div className="mt-4 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAllCurrentTeams((current) => !current)}
+              className="min-h-11 rounded-md border border-black/15 bg-white px-4 py-2.5 text-sm font-semibold text-[#174b3f] transition hover:border-[#2f6d5f] hover:bg-[#eef5ee]"
+            >
+              {showAllCurrentTeams ? "Show fewer" : "Show all teams"}
+            </button>
+          </div>
 
           <div className="mt-6 rounded-lg border border-black/10 bg-[#fbfbf7] p-4 sm:p-5">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -326,6 +351,9 @@ export function PredictionLab() {
                 <h3 className="text-2xl font-semibold">History vs Current Form</h3>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-black/62">
                   Where does your team sit: history, form, or both?
+                </p>
+                <p className="mt-2 text-xs leading-5 text-black/45 sm:hidden">
+                  Tip: rotate your phone for a wider view of the chart.
                 </p>
               </div>
               <p className="text-xs font-medium uppercase tracking-[0.14em] text-black/45">
