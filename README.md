@@ -1,4 +1,4 @@
-# World Cup Prediction Lab
+# World Cup Lab
 
 An explainable 2026 World Cup analysis lab built with Next.js, TypeScript, and Tailwind CSS.
 
