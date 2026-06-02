@@ -41,7 +41,7 @@ It does **not** generate prediction probabilities, use machine learning, or prov
 - Tailwind CSS
 - Node.js scripts for data preparation
 - No database
-- No external API keys
+- Optional PostHog analytics via environment variables
 
 ## Quick Start
 
@@ -53,6 +53,20 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+PostHog is optional. The app runs without analytics configured.
+
+```bash
+# .env.local
+NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN=phc_your_project_token
+NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+
+# Optional: renders a GitHub link in the app and tracks clicks.
+NEXT_PUBLIC_GITHUB_URL=https://github.com/your-org/world-cup-prediction-lab
+```
+
+The project uses PostHog's official Next.js client setup with `posthog-js` and
+`src/instrumentation-client.ts`. Session recordings, feature flags, and autocapture are disabled.
 
 ## Scripts
 
@@ -72,6 +86,27 @@ npm run build:current-strength
 npm run lint
 npm run build
 ```
+
+## Analytics
+
+PostHog analytics are enabled only when `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` is set.
+
+Tracked events:
+
+- `$pageview`
+- `Team selected`
+- `Tournament pick saved`
+- `Scatter plot point clicked`
+- `Methodology expanded`
+- `GitHub link clicked`
+
+Not enabled:
+
+- Session recordings
+- Feature flags
+- Broad autocapture
+
+Setup reference: [PostHog Next.js documentation](https://posthog.com/docs/libraries/next-js).
 
 ## Architecture
 

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { currentStrengthFormula, currentStrengthTeams } from "@/lib/current-strength";
 import { historicalStrengthFormula, historicalStrengthTeams } from "@/lib/historical-strength";
+import { trackEvent } from "@/lib/analytics";
 
 type UserPrediction = {
   winner: string;
@@ -81,10 +82,12 @@ export function PredictionLab() {
   const [prediction, setPrediction] = useState<UserPrediction>(defaultPrediction);
   const [savedPredictions, setSavedPredictions] = useState<UserPrediction[]>([]);
   const [activeScatterTeam, setActiveScatterTeam] = useState<string | null>(null);
+  const [hasTrackedMethodologyExpanded, setHasTrackedMethodologyExpanded] = useState(false);
 
   const teamNames = rankedTeams.map((team) => team.team_name);
   const topTeam = rankedTeams[0];
   const scatterTeams = rankedTeams.filter((team) => team.current_strength_score !== null);
+  const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL;
 
   function updateSemiFinalist(index: number, value: string) {
     setPrediction((current) => {
@@ -95,6 +98,11 @@ export function PredictionLab() {
   }
 
   function savePrediction() {
+    trackEvent("Tournament pick saved", {
+      winner: prediction.winner,
+      finalist: prediction.finalist,
+      semi_finalists: prediction.semiFinalists,
+    });
     setSavedPredictions((current) => [prediction, ...current].slice(0, 5));
   }
 
@@ -126,6 +134,17 @@ export function PredictionLab() {
               >
                 Make your pick
               </a>
+              {githubUrl ? (
+                <a
+                  href={githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => trackEvent("GitHub link clicked", { url: githubUrl })}
+                  className="flex min-h-11 items-center justify-center rounded-md border border-white/35 px-4 py-2.5 text-white transition hover:bg-white/10"
+                >
+                  GitHub
+                </a>
+              ) : null}
             </div>
           </div>
 
@@ -444,7 +463,15 @@ export function PredictionLab() {
               win probability.
             </p>
           </div>
-          <details className="mt-5 rounded-md bg-[#f7f7f2] p-4 text-sm leading-6 text-black/66">
+          <details
+            onToggle={(event) => {
+              if (event.currentTarget.open && !hasTrackedMethodologyExpanded) {
+                trackEvent("Methodology expanded");
+                setHasTrackedMethodologyExpanded(true);
+              }
+            }}
+            className="mt-5 rounded-md bg-[#f7f7f2] p-4 text-sm leading-6 text-black/66"
+          >
             <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 font-semibold text-[#174b3f]">
               <span>View methodology details</span>
               <span aria-hidden="true" className="text-lg leading-none">+</span>
@@ -686,7 +713,16 @@ function ScatterPlot({
                 onMouseLeave={() => onActiveTeamChange(null)}
                 onFocus={() => onActiveTeamChange(team.team_id)}
                 onBlur={() => onActiveTeamChange(null)}
-                onClick={() => onActiveTeamChange(isActive ? null : team.team_id)}
+                onClick={() => {
+                  trackEvent("Scatter plot point clicked", {
+                    team: team.team_name,
+                    historical_score: team.historical_strength_score,
+                    current_score: currentScore,
+                    recent_record: team.recent_record,
+                    category,
+                  });
+                  onActiveTeamChange(isActive ? null : team.team_id);
+                }}
               >
                 <title>
                   {`${team.team_name}: ${category}, historical ${team.historical_strength_score}, current ${currentScore}, recent record ${team.recent_record}`}
@@ -838,7 +874,14 @@ function SelectField({
       {label}
       <select
         value={value}
-        onChange={(event) => onChange(event.target.value)}
+        onChange={(event) => {
+          const nextValue = event.target.value;
+          trackEvent("Team selected", {
+            team: nextValue,
+            field: label,
+          });
+          onChange(nextValue);
+        }}
         className="mt-2 min-h-11 w-full rounded-md border border-black/15 bg-white px-3 py-3 text-base text-black outline-none transition focus:border-[#2f6d5f] focus:ring-4 focus:ring-[#2f6d5f]/15 sm:text-sm"
       >
         {options.map((option) => (
