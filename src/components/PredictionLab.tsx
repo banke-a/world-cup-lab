@@ -115,7 +115,7 @@ export function PredictionLab() {
               Historical index lab
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-              2026 World Cup Prediction Lab
+              2026 World Cup Lab
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 sm:text-lg">
               A lightweight, explainable football history index derived from World Cup performance.
