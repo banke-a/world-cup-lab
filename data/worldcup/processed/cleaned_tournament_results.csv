@@ -1,0 +1,121 @@
+tournament_id,tournament_name,tournament_gender,position,team_id,team_name,team_code
+WC-1930,1930 FIFA Men's World Cup,men,1,T-84,Uruguay,URY
+WC-1930,1930 FIFA Men's World Cup,men,2,T-03,Argentina,ARG
+WC-1930,1930 FIFA Men's World Cup,men,3,T-83,United States,USA
+WC-1930,1930 FIFA Men's World Cup,men,4,T-87,Yugoslavia,YUG
+WC-1934,1934 FIFA Men's World Cup,men,1,T-41,Italy,ITA
+WC-1934,1934 FIFA Men's World Cup,men,2,T-21,Czechoslovakia,CSK
+WC-1934,1934 FIFA Men's World Cup,men,3,T-31,Germany,DEU
+WC-1934,1934 FIFA Men's World Cup,men,4,T-05,Austria,AUT
+WC-1938,1938 FIFA Men's World Cup,men,1,T-41,Italy,ITA
+WC-1938,1938 FIFA Men's World Cup,men,2,T-36,Hungary,HUN
+WC-1938,1938 FIFA Men's World Cup,men,3,T-09,Brazil,BRA
+WC-1938,1938 FIFA Men's World Cup,men,4,T-74,Sweden,SWE
+WC-1950,1950 FIFA Men's World Cup,men,1,T-84,Uruguay,URY
+WC-1950,1950 FIFA Men's World Cup,men,2,T-09,Brazil,BRA
+WC-1950,1950 FIFA Men's World Cup,men,3,T-74,Sweden,SWE
+WC-1950,1950 FIFA Men's World Cup,men,4,T-73,Spain,ESP
+WC-1954,1954 FIFA Men's World Cup,men,1,T-86,West Germany,DEU
+WC-1954,1954 FIFA Men's World Cup,men,2,T-36,Hungary,HUN
+WC-1954,1954 FIFA Men's World Cup,men,3,T-05,Austria,AUT
+WC-1954,1954 FIFA Men's World Cup,men,4,T-84,Uruguay,URY
+WC-1958,1958 FIFA Men's World Cup,men,1,T-09,Brazil,BRA
+WC-1958,1958 FIFA Men's World Cup,men,2,T-74,Sweden,SWE
+WC-1958,1958 FIFA Men's World Cup,men,3,T-30,France,FRA
+WC-1958,1958 FIFA Men's World Cup,men,4,T-86,West Germany,DEU
+WC-1962,1962 FIFA Men's World Cup,men,1,T-09,Brazil,BRA
+WC-1962,1962 FIFA Men's World Cup,men,2,T-21,Czechoslovakia,CSK
+WC-1962,1962 FIFA Men's World Cup,men,3,T-13,Chile,CHL
+WC-1962,1962 FIFA Men's World Cup,men,4,T-87,Yugoslavia,YUG
+WC-1966,1966 FIFA Men's World Cup,men,1,T-28,England,ENG
+WC-1966,1966 FIFA Men's World Cup,men,2,T-86,West Germany,DEU
+WC-1966,1966 FIFA Men's World Cup,men,3,T-58,Portugal,PRT
+WC-1966,1966 FIFA Men's World Cup,men,4,T-72,Soviet Union,SUN
+WC-1970,1970 FIFA Men's World Cup,men,1,T-09,Brazil,BRA
+WC-1970,1970 FIFA Men's World Cup,men,2,T-41,Italy,ITA
+WC-1970,1970 FIFA Men's World Cup,men,3,T-86,West Germany,DEU
+WC-1970,1970 FIFA Men's World Cup,men,4,T-84,Uruguay,URY
+WC-1974,1974 FIFA Men's World Cup,men,1,T-86,West Germany,DEU
+WC-1974,1974 FIFA Men's World Cup,men,2,T-48,Netherlands,NLD
+WC-1974,1974 FIFA Men's World Cup,men,3,T-57,Poland,POL
+WC-1974,1974 FIFA Men's World Cup,men,4,T-09,Brazil,BRA
+WC-1978,1978 FIFA Men's World Cup,men,1,T-03,Argentina,ARG
+WC-1978,1978 FIFA Men's World Cup,men,2,T-48,Netherlands,NLD
+WC-1978,1978 FIFA Men's World Cup,men,3,T-09,Brazil,BRA
+WC-1978,1978 FIFA Men's World Cup,men,4,T-41,Italy,ITA
+WC-1982,1982 FIFA Men's World Cup,men,1,T-41,Italy,ITA
+WC-1982,1982 FIFA Men's World Cup,men,2,T-86,West Germany,DEU
+WC-1982,1982 FIFA Men's World Cup,men,3,T-57,Poland,POL
+WC-1982,1982 FIFA Men's World Cup,men,4,T-30,France,FRA
+WC-1986,1986 FIFA Men's World Cup,men,1,T-03,Argentina,ARG
+WC-1986,1986 FIFA Men's World Cup,men,2,T-86,West Germany,DEU
+WC-1986,1986 FIFA Men's World Cup,men,3,T-30,France,FRA
+WC-1986,1986 FIFA Men's World Cup,men,4,T-06,Belgium,BEL
+WC-1990,1990 FIFA Men's World Cup,men,1,T-86,West Germany,DEU
+WC-1990,1990 FIFA Men's World Cup,men,2,T-03,Argentina,ARG
+WC-1990,1990 FIFA Men's World Cup,men,3,T-41,Italy,ITA
+WC-1990,1990 FIFA Men's World Cup,men,4,T-28,England,ENG
+WC-1991,1991 FIFA Women's World Cup,women,1,T-83,United States,USA
+WC-1991,1991 FIFA Women's World Cup,women,2,T-53,Norway,NOR
+WC-1991,1991 FIFA Women's World Cup,women,3,T-74,Sweden,SWE
+WC-1991,1991 FIFA Women's World Cup,women,4,T-31,Germany,DEU
+WC-1994,1994 FIFA Men's World Cup,men,1,T-09,Brazil,BRA
+WC-1994,1994 FIFA Men's World Cup,men,2,T-41,Italy,ITA
+WC-1994,1994 FIFA Men's World Cup,men,3,T-74,Sweden,SWE
+WC-1994,1994 FIFA Men's World Cup,men,4,T-10,Bulgaria,BGR
+WC-1995,1995 FIFA Women's World Cup,women,1,T-53,Norway,NOR
+WC-1995,1995 FIFA Women's World Cup,women,2,T-31,Germany,DEU
+WC-1995,1995 FIFA Women's World Cup,women,3,T-83,United States,USA
+WC-1995,1995 FIFA Women's World Cup,women,4,T-14,China,CHN
+WC-1998,1998 FIFA Men's World Cup,men,1,T-30,France,FRA
+WC-1998,1998 FIFA Men's World Cup,men,2,T-09,Brazil,BRA
+WC-1998,1998 FIFA Men's World Cup,men,3,T-18,Croatia,HRV
+WC-1998,1998 FIFA Men's World Cup,men,4,T-48,Netherlands,NLD
+WC-1999,1999 FIFA Women's World Cup,women,1,T-83,United States,USA
+WC-1999,1999 FIFA Women's World Cup,women,2,T-14,China,CHN
+WC-1999,1999 FIFA Women's World Cup,women,3,T-09,Brazil,BRA
+WC-1999,1999 FIFA Women's World Cup,women,4,T-53,Norway,NOR
+WC-2002,2002 FIFA Men's World Cup,men,1,T-09,Brazil,BRA
+WC-2002,2002 FIFA Men's World Cup,men,2,T-31,Germany,DEU
+WC-2002,2002 FIFA Men's World Cup,men,3,T-80,Turkey,TUR
+WC-2002,2002 FIFA Men's World Cup,men,4,T-71,South Korea,KOR
+WC-2003,2003 FIFA Women's World Cup,women,1,T-31,Germany,DEU
+WC-2003,2003 FIFA Women's World Cup,women,2,T-74,Sweden,SWE
+WC-2003,2003 FIFA Women's World Cup,women,3,T-83,United States,USA
+WC-2003,2003 FIFA Women's World Cup,women,4,T-12,Canada,CAN
+WC-2006,2006 FIFA Men's World Cup,men,1,T-41,Italy,ITA
+WC-2006,2006 FIFA Men's World Cup,men,2,T-30,France,FRA
+WC-2006,2006 FIFA Men's World Cup,men,3,T-31,Germany,DEU
+WC-2006,2006 FIFA Men's World Cup,men,4,T-58,Portugal,PRT
+WC-2007,2007 FIFA Women's World Cup,women,1,T-31,Germany,DEU
+WC-2007,2007 FIFA Women's World Cup,women,2,T-09,Brazil,BRA
+WC-2007,2007 FIFA Women's World Cup,women,3,T-83,United States,USA
+WC-2007,2007 FIFA Women's World Cup,women,4,T-53,Norway,NOR
+WC-2010,2010 FIFA Men's World Cup,men,1,T-73,Spain,ESP
+WC-2010,2010 FIFA Men's World Cup,men,2,T-48,Netherlands,NLD
+WC-2010,2010 FIFA Men's World Cup,men,3,T-31,Germany,DEU
+WC-2010,2010 FIFA Men's World Cup,men,4,T-84,Uruguay,URY
+WC-2011,2011 FIFA Women's World Cup,women,1,T-44,Japan,JPN
+WC-2011,2011 FIFA Women's World Cup,women,2,T-83,United States,USA
+WC-2011,2011 FIFA Women's World Cup,women,3,T-74,Sweden,SWE
+WC-2011,2011 FIFA Women's World Cup,women,4,T-30,France,FRA
+WC-2014,2014 FIFA Men's World Cup,men,1,T-31,Germany,DEU
+WC-2014,2014 FIFA Men's World Cup,men,2,T-03,Argentina,ARG
+WC-2014,2014 FIFA Men's World Cup,men,3,T-48,Netherlands,NLD
+WC-2014,2014 FIFA Men's World Cup,men,4,T-09,Brazil,BRA
+WC-2015,2015 FIFA Women's World Cup,women,1,T-83,United States,USA
+WC-2015,2015 FIFA Women's World Cup,women,2,T-44,Japan,JPN
+WC-2015,2015 FIFA Women's World Cup,women,3,T-28,England,ENG
+WC-2015,2015 FIFA Women's World Cup,women,4,T-31,Germany,DEU
+WC-2018,2018 FIFA Men's World Cup,men,1,T-30,France,FRA
+WC-2018,2018 FIFA Men's World Cup,men,2,T-18,Croatia,HRV
+WC-2018,2018 FIFA Men's World Cup,men,3,T-06,Belgium,BEL
+WC-2018,2018 FIFA Men's World Cup,men,4,T-28,England,ENG
+WC-2019,2019 FIFA Women's World Cup,women,1,T-83,United States,USA
+WC-2019,2019 FIFA Women's World Cup,women,2,T-48,Netherlands,NLD
+WC-2019,2019 FIFA Women's World Cup,women,3,T-74,Sweden,SWE
+WC-2019,2019 FIFA Women's World Cup,women,4,T-28,England,ENG
+WC-2022,2022 FIFA Men's World Cup,men,1,T-03,Argentina,ARG
+WC-2022,2022 FIFA Men's World Cup,men,2,T-30,France,FRA
+WC-2022,2022 FIFA Men's World Cup,men,3,T-18,Croatia,HRV
+WC-2022,2022 FIFA Men's World Cup,men,4,T-47,Morocco,MAR

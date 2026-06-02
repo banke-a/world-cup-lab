@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">World Cup Prediction Lab homepage preview</title>
+  <desc id="desc">A screenshot-style preview of the homepage showing historical and current strength sections.</desc>
+  <rect width="1400" height="900" fill="#f7f7f2"/>
+  <rect width="1400" height="250" fill="#174b3f"/>
+  <text x="80" y="82" fill="#d7ead1" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="3">HISTORICAL INDEX LAB</text>
+  <text x="80" y="145" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">2026 World Cup Prediction Lab</text>
+  <text x="80" y="194" fill="#d9eee6" font-family="Arial, Helvetica, sans-serif" font-size="24">Historical data now. Current strength next. Predictions later.</text>
+  <rect x="980" y="48" width="320" height="160" rx="8" fill="#ffffff" opacity="0.12" stroke="#ffffff" stroke-opacity="0.2"/>
+  <text x="1015" y="92" fill="#d9eee6" font-family="Arial, Helvetica, sans-serif" font-size="18">Top historical score</text>
+  <text x="1015" y="142" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">Brazil</text>
+  <text x="1210" y="142" fill="#f5c84b" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">91.86</text>
+
+  <text x="80" y="320" fill="#2f6d5f" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2">HISTORICAL STRENGTH SCORE</text>
+  <text x="80" y="363" fill="#151515" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">Top 30 nations</text>
+  <rect x="80" y="395" width="1260" height="230" rx="8" fill="#ffffff" stroke="#dfddd2"/>
+  <rect x="80" y="395" width="1260" height="54" rx="8" fill="#ece7d9"/>
+  <text x="115" y="430" fill="#6b675e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">RANK</text>
+  <text x="210" y="430" fill="#6b675e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">TEAM</text>
+  <text x="470" y="430" fill="#6b675e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">HISTORICAL SCORE</text>
+  <text x="705" y="430" fill="#6b675e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">APPEARANCES</text>
+  <text x="915" y="430" fill="#6b675e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">TITLES</text>
+  <text x="1080" y="430" fill="#6b675e" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">WIN RATE</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#151515">
+    <text x="120" y="488">1</text><text x="210" y="488" font-weight="700">Brazil</text><text x="505" y="488" font-weight="700">91.86</text><text x="755" y="488">22</text><text x="938" y="488">5</text><text x="1085" y="488">66.67%</text>
+    <line x1="80" y1="510" x2="1340" y2="510" stroke="#eeeeea"/>
+    <text x="120" y="550">2</text><text x="210" y="550" font-weight="700">Germany</text><text x="505" y="550" font-weight="700">88.34</text><text x="755" y="550">20</text><text x="938" y="550">4</text><text x="1085" y="550">60.71%</text>
+    <line x1="80" y1="572" x2="1340" y2="572" stroke="#eeeeea"/>
+    <text x="120" y="612">3</text><text x="210" y="612" font-weight="700">Italy</text><text x="505" y="612" font-weight="700">74.20</text><text x="755" y="612">18</text><text x="938" y="612">4</text><text x="1085" y="612">54.22%</text>
+  </g>
+
+  <text x="80" y="700" fill="#2f6d5f" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2">CURRENT STRENGTH INDEX</text>
+  <text x="80" y="740" fill="#151515" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">History meets recent form</text>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="80" y="772" width="385" height="90" rx="8" fill="#ffffff" stroke="#dfddd2"/>
+    <text x="110" y="808" fill="#151515" font-size="20" font-weight="700">Strong in both</text>
+    <text x="110" y="840" fill="#64615a" font-size="17">Brazil, Germany, France</text>
+    <rect x="500" y="772" width="385" height="90" rx="8" fill="#ffffff" stroke="#dfddd2"/>
+    <text x="530" y="808" fill="#151515" font-size="20" font-weight="700">Currently lively</text>
+    <text x="530" y="840" fill="#64615a" font-size="17">Morocco, Japan, Canada</text>
+    <rect x="920" y="772" width="420" height="90" rx="8" fill="#ffffff" stroke="#dfddd2"/>
+    <text x="950" y="808" fill="#151515" font-size="20" font-weight="700">Future prediction layer</text>
+    <text x="950" y="840" fill="#64615a" font-size="17">Not active yet. No probabilities.</text>
+  </g>
+</svg>

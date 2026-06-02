@@ -1,0 +1,82 @@
+rank,team_id,team_name,team_code,confederation_code,historical_strength_score,world_cup_appearances,titles,finals_appearances,semi_final_appearances,win_rate,goals_scored,goals_conceded,best_finish_label,average_finish_position_estimate,appearances_score,titles_score,finals_score,semi_finals_score,win_rate_score
+1,N-BRA,Brazil,BRA,CONMEBOL,91.86,22,5,7,11,66.67,237,108,position 1,7.41,100,100,87.5,84.62,66.67
+2,N-DEU,Germany,DEU,UEFA,88.34,20,4,8,13,60.71,232,130,position 1,6.4,90.91,80,100,100,60.71
+3,N-ITA,Italy,ITA,UEFA,74.2,18,4,6,8,54.22,128,77,position 1,12.39,81.82,80,75,61.54,54.22
+4,N-ARG,Argentina,ARG,CONMEBOL,66.81,18,3,6,6,53.41,152,101,position 1,10.28,81.82,60,75,46.15,53.41
+5,N-FRA,France,FRA,UEFA,55.24,16,2,4,7,53.42,136,85,position 1,12,72.73,40,50,53.85,53.42
+6,N-URY,Uruguay,URY,CONMEBOL,44.1,14,2,2,5,42.37,89,76,position 1,12.43,63.64,40,25,38.46,42.37
+7,N-ENG,England,ENG,UEFA,37.1,16,1,1,3,43.24,104,68,position 1,11.31,72.73,20,12.5,23.08,43.24
+8,N-ESP,Spain,ESP,UEFA,36.25,16,1,1,2,46.27,108,75,position 1,14.56,72.73,20,12.5,15.38,46.27
+9,N-NLD,Netherlands,NLD,UEFA,33.72,11,0,3,5,54.55,96,52,position 2,8.45,50,0,37.5,38.46,54.55
+10,N-SWE,Sweden,SWE,UEFA,27.21,12,0,1,4,37.25,80,73,position 2,12,54.55,0,12.5,30.77,37.25
+11,N-MEX,Mexico,MEX,CONCACAF,26.01,17,0,0,0,28.33,62,101,quarter-finals,18.82,77.27,0,0,0,28.33
+12,N-BEL,Belgium,BEL,UEFA,25.52,14,0,0,2,41.18,69,74,position 3,16.21,63.64,0,0,15.38,41.18
+13,N-HUN,Hungary,HUN,UEFA,24.27,9,0,2,2,46.88,87,57,position 2,13.78,40.91,0,25,15.38,46.88
+14,N-SRB,Serbia,SRB,UEFA,23.71,13,0,0,2,36.73,71,71,position 4,15.69,59.09,0,0,15.38,36.73
+15,N-CSK,Czechoslovakia,CSK,UEFA,21.88,8,0,2,2,36.67,44,45,position 2,14.5,36.36,0,25,15.38,36.67
+16,N-RUS,Russia,RUS,UEFA,20.38,11,0,0,1,42.22,77,54,position 4,14.55,50,0,0,7.69,42.22
+17,N-CHE,Switzerland,CHE,UEFA,19.78,12,0,0,0,34.15,55,73,quarter-finals,16.67,54.55,0,0,0,34.15
+18,N-POL,Poland,POL,UEFA,19.05,9,0,0,2,44.74,49,50,position 3,15.33,40.91,0,0,15.38,44.74
+19,N-USA,United States,USA,CONCACAF,18.59,11,0,0,1,24.32,40,66,position 3,17,50,0,0,7.69,24.32
+20,N-HRV,Croatia,HRV,UEFA,18.48,6,0,1,3,43.33,43,33,position 2,13.33,27.27,0,12.5,23.08,43.33
+21,N-PRT,Portugal,PRT,UEFA,18.07,8,0,0,2,48.57,61,41,position 3,14.88,36.36,0,0,15.38,48.57
+22,N-KOR,South Korea,KOR,AFC,18,11,0,0,1,18.42,39,78,position 4,20.73,50,0,0,7.69,18.42
+23,N-CHL,Chile,CHL,CONMEBOL,16.76,9,0,0,1,33.33,40,49,position 3,19,40.91,0,0,7.69,33.33
+24,N-AUT,Austria,AUT,UEFA,15.99,7,0,0,2,41.38,43,47,position 3,14.71,31.82,0,0,15.38,41.38
+25,N-PRY,Paraguay,PRY,CONMEBOL,13.5,8,0,0,0,25.93,30,38,quarter-finals,19,36.36,0,0,0,25.93
+26,N-ROU,Romania,ROU,UEFA,13.36,7,0,0,0,38.1,30,32,quarter-finals,17.14,31.82,0,0,0,38.1
+27,N-CMR,Cameroon,CMR,CAF,12.83,8,0,0,0,19.23,22,47,quarter-finals,22,36.36,0,0,0,19.23
+28,N-SCO,Scotland,SCO,UEFA,12.65,8,0,0,0,17.39,25,41,group stage,24,36.36,0,0,0,17.39
+29,N-JPN,Japan,JPN,AFC,12.35,7,0,0,0,28,25,33,round of 16,19.43,31.82,0,0,0,28
+30,N-COL,Colombia,COL,CONMEBOL,12.27,6,0,0,0,40.91,32,30,quarter-finals,18.67,27.27,0,0,0,40.91
+31,N-DNK,Denmark,DNK,UEFA,12.09,6,0,0,0,39.13,31,29,quarter-finals,17.33,27.27,0,0,0,39.13
+32,N-BGR,Bulgaria,BGR,UEFA,11.85,7,0,0,1,11.54,22,53,position 4,20,31.82,0,0,7.69,11.54
+33,N-MAR,Morocco,MAR,CAF,11.51,6,0,0,1,21.74,20,27,position 4,19.33,27.27,0,0,7.69,21.74
+34,N-CRI,Costa Rica,CRI,CONCACAF,11.04,6,0,0,0,28.57,22,39,quarter-finals,20,27.27,0,0,0,28.57
+35,N-NGA,Nigeria,NGA,CAF,11.04,6,0,0,0,28.57,23,30,round of 16,20,27.27,0,0,0,28.57
+36,N-SAU,Saudi Arabia,SAU,AFC,10.29,6,0,0,0,21.05,14,44,round of 16,22.67,27.27,0,0,0,21.05
+37,N-AUS,Australia,AUS,AFC,10.18,6,0,0,0,20,17,37,round of 16,21.33,27.27,0,0,0,20
+38,N-IRN,Iran,IRN,AFC,9.85,6,0,0,0,16.67,13,31,group stage,24,27.27,0,0,0,16.67
+39,N-TUN,Tunisia,TUN,CAF,9.85,6,0,0,0,16.67,14,26,group stage,24,27.27,0,0,0,16.67
+40,N-PER,Peru,PER,CONMEBOL,9.6,5,0,0,0,27.78,21,33,quarter-finals,18.4,22.73,0,0,0,27.78
+41,N-ECU,Ecuador,ECU,CONMEBOL,9.3,4,0,0,0,38.46,14,14,round of 16,22,18.18,0,0,0,38.46
+42,N-TUR,Turkey,TUR,UEFA,8.88,2,0,0,1,50,20,17,position 3,13.5,9.09,0,0,7.69,50
+43,N-GHA,Ghana,GHA,CAF,8.79,4,0,0,0,33.33,18,23,quarter-finals,18,18.18,0,0,0,33.33
+44,N-SEN,Senegal,SEN,CAF,8.26,3,0,0,0,41.67,16,17,quarter-finals,16,13.64,0,0,0,41.67
+45,N-DZA,Algeria,DZA,CAF,7.76,4,0,0,0,23.08,13,19,round of 16,22,18.18,0,0,0,23.08
+46,N-CIV,Ivory Coast,CIV,CAF,7.42,3,0,0,0,33.33,13,14,group stage,24,13.64,0,0,0,33.33
+47,N-NOR,Norway,NOR,UEFA,6.59,3,0,0,0,25,7,8,round of 16,18.67,13.64,0,0,0,25
+48,N-NIR,Northern Ireland,NIR,UEFA,6.4,3,0,0,0,23.08,13,23,quarter-finals,14.67,13.64,0,0,0,23.08
+49,N-ZAF,South Africa,ZAF,CAF,6.31,3,0,0,0,22.22,11,16,group stage,24,13.64,0,0,0,22.22
+50,N-GRC,Greece,GRC,UEFA,6.09,3,0,0,0,20,5,20,round of 16,21.33,13.64,0,0,0,20
+51,N-IRL,Republic of Ireland,IRL,UEFA,5.63,3,0,0,0,15.38,10,10,quarter-finals,13.33,13.64,0,0,0,15.38
+52,N-UKR,Ukraine,UKR,UEFA,5.37,1,0,0,0,40,5,7,quarter-finals,8,4.55,0,0,0,40
+53,N-BIH,Bosnia and Herzegovina,BIH,UEFA,4.7,1,0,0,0,33.33,4,4,group stage,24,4.55,0,0,0,33.33
+54,N-CUB,Cuba,CUB,CONCACAF,4.7,1,0,0,0,33.33,5,12,quarter-finals,8,4.55,0,0,0,33.33
+55,N-CZE,Czech Republic,CZE,UEFA,4.7,1,0,0,0,33.33,3,4,group stage,24,4.55,0,0,0,33.33
+56,N-DDR,East Germany,DDR,UEFA,4.7,1,0,0,0,33.33,5,5,second group stage,12,4.55,0,0,0,33.33
+57,N-JAM,Jamaica,JAM,CONCACAF,4.7,1,0,0,0,33.33,3,9,group stage,24,4.55,0,0,0,33.33
+58,N-SVN,Slovenia,SVN,UEFA,4.39,2,0,0,0,16.67,5,10,group stage,24,9.09,0,0,0,16.67
+59,N-PRK,North Korea,PRK,AFC,4.16,2,0,0,0,14.29,6,21,quarter-finals,16,9.09,0,0,0,14.29
+60,N-BOL,Bolivia,BOL,CONMEBOL,4.09,3,0,0,0,0,1,20,group stage,24,13.64,0,0,0,0
+61,N-EGY,Egypt,EGY,CAF,4.09,3,0,0,0,0,5,12,round of 16,21.33,13.64,0,0,0,0
+62,N-HND,Honduras,HND,CONCACAF,4.09,3,0,0,0,0,3,14,group stage,24,13.64,0,0,0,0
+63,N-WAL,Wales,WAL,UEFA,3.98,2,0,0,0,12.5,5,10,quarter-finals,16,9.09,0,0,0,12.5
+64,N-SVK,Slovakia,SVK,UEFA,3.87,1,0,0,0,25,5,7,round of 16,16,4.55,0,0,0,25
+65,N-CAN,Canada,CAN,CONCACAF,2.73,2,0,0,0,0,2,12,group stage,24,9.09,0,0,0,0
+66,N-SLV,El Salvador,SLV,CONCACAF,2.73,2,0,0,0,0,1,22,group stage,24,9.09,0,0,0,0
+67,N-NZL,New Zealand,NZL,OFC,2.73,2,0,0,0,0,4,14,group stage,24,9.09,0,0,0,0
+68,N-AGO,Angola,AGO,CAF,1.36,1,0,0,0,0,1,2,group stage,24,4.55,0,0,0,0
+69,N-CHN,China,CHN,AFC,1.36,1,0,0,0,0,0,9,group stage,24,4.55,0,0,0,0
+70,N-COD,DR Congo,COD,CAF,1.36,1,0,0,0,0,0,14,group stage,24,4.55,0,0,0,0
+71,N-IDN,Dutch East Indies,IDN,AFC,1.36,1,0,0,0,0,0,6,round of 16,16,4.55,0,0,0,0
+72,N-HTI,Haiti,HTI,CONCACAF,1.36,1,0,0,0,0,2,14,group stage,24,4.55,0,0,0,0
+73,N-ISL,Iceland,ISL,UEFA,1.36,1,0,0,0,0,2,5,group stage,24,4.55,0,0,0,0
+74,N-IRQ,Iraq,IRQ,AFC,1.36,1,0,0,0,0,1,4,group stage,24,4.55,0,0,0,0
+75,N-ISR,Israel,ISR,UEFA,1.36,1,0,0,0,0,1,3,group stage,24,4.55,0,0,0,0
+76,N-KWT,Kuwait,KWT,AFC,1.36,1,0,0,0,0,2,6,group stage,24,4.55,0,0,0,0
+77,N-PAN,Panama,PAN,CONCACAF,1.36,1,0,0,0,0,2,11,group stage,24,4.55,0,0,0,0
+78,N-QAT,Qatar,QAT,AFC,1.36,1,0,0,0,0,1,7,group stage,24,4.55,0,0,0,0
+79,N-TGO,Togo,TGO,CAF,1.36,1,0,0,0,0,1,6,group stage,24,4.55,0,0,0,0
+80,N-TTO,Trinidad and Tobago,TTO,CONCACAF,1.36,1,0,0,0,0,0,4,group stage,24,4.55,0,0,0,0
+81,N-ARE,United Arab Emirates,ARE,AFC,1.36,1,0,0,0,0,2,11,group stage,24,4.55,0,0,0,0

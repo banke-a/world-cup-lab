@@ -1,0 +1,3 @@
+file,source_url,row_count,column_count,byte_size,required_columns_present,missing_required_columns,completed_matches_used
+results.csv,https://raw.githubusercontent.com/martj42/international_results/master/results.csv,49363,9,3720163,true,,43135
+former_names.csv,https://raw.githubusercontent.com/martj42/international_results/master/former_names.csv,36,4,1691,true,,

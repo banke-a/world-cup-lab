@@ -1,0 +1,158 @@
+export type TournamentId = string;
+export type TeamId = string;
+export type MatchId = string;
+
+export type Tournament = {
+  key_id: number;
+  tournament_id: TournamentId;
+  tournament_name: string;
+  year: number;
+  start_date: string;
+  end_date: string;
+  host_country: string;
+  winner: string;
+  host_won: 0 | 1;
+  count_teams: number;
+  group_stage: 0 | 1;
+  second_group_stage: 0 | 1;
+  final_round: 0 | 1;
+  round_of_16: 0 | 1;
+  quarter_finals: 0 | 1;
+  semi_finals: 0 | 1;
+  third_place_match: 0 | 1;
+  final: 0 | 1;
+};
+
+export type Team = {
+  key_id: number;
+  team_id: TeamId;
+  team_name: string;
+  team_code: string;
+  mens_team: 0 | 1;
+  womens_team: 0 | 1;
+  federation_name: string;
+  region_name: string;
+  confederation_id: string;
+  confederation_name: string;
+  confederation_code: string;
+  mens_team_wikipedia_link: string;
+  womens_team_wikipedia_link: string;
+  federation_wikipedia_link: string;
+};
+
+export type Match = {
+  key_id: number;
+  tournament_id: TournamentId;
+  tournament_name: string;
+  match_id: MatchId;
+  match_name: string;
+  stage_name: string;
+  group_name: string;
+  group_stage: 0 | 1;
+  knockout_stage: 0 | 1;
+  replayed: 0 | 1;
+  replay: 0 | 1;
+  match_date: string;
+  match_time: string;
+  stadium_id: string;
+  stadium_name: string;
+  city_name: string;
+  country_name: string;
+  home_team_id: TeamId;
+  home_team_name: string;
+  home_team_code: string;
+  away_team_id: TeamId;
+  away_team_name: string;
+  away_team_code: string;
+  score: string;
+  home_team_score: number;
+  away_team_score: number;
+  home_team_score_margin: number;
+  away_team_score_margin: number;
+  extra_time: 0 | 1;
+  penalty_shootout: 0 | 1;
+  score_penalties: string;
+  home_team_score_penalties: number;
+  away_team_score_penalties: number;
+  result: string;
+  home_team_win: 0 | 1;
+  away_team_win: 0 | 1;
+  draw: 0 | 1;
+};
+
+export type TournamentStanding = {
+  key_id: number;
+  tournament_id: TournamentId;
+  tournament_name: string;
+  position: number;
+  team_id: TeamId;
+  team_name: string;
+  team_code: string;
+};
+
+export type QualifiedTeam = {
+  key_id: number;
+  tournament_id: TournamentId;
+  tournament_name: string;
+  team_id: TeamId;
+  team_name: string;
+  team_code: string;
+  count_matches: number;
+  performance: string;
+};
+
+export type TeamTournamentFeature = {
+  tournament_id: TournamentId;
+  tournament_name: string;
+  year: number;
+  tournament_gender: "men" | "women";
+  original_team_id: TeamId;
+  original_team_name: string;
+  original_team_code: string;
+  team_id: TeamId;
+  team_name: string;
+  team_code: string;
+  confederation_code: string;
+  matches_played: number;
+  wins: number;
+  goals_scored: number;
+  goals_conceded: number;
+  goals_scored_per_match: number;
+  goals_conceded_per_match: number;
+  result_position: number | null;
+  performance: string;
+  finish_position_estimate: number;
+  title: 0 | 1;
+  final_appearance: 0 | 1;
+  semi_final_appearance: 0 | 1;
+};
+
+export type TeamFeatureStoreRow = {
+  team_id: TeamId;
+  team_name: string;
+  team_code: string;
+  confederation_code: string;
+  tournament_gender: "men" | "women";
+  world_cup_appearances: number;
+  titles: number;
+  finals_appearances: number;
+  semi_final_appearances: number;
+  best_finish_position: number;
+  best_finish_label: string;
+  average_finish_position_estimate: number;
+  total_matches_played: number;
+  total_wins: number;
+  goals_scored: number;
+  goals_conceded: number;
+  win_rate: number;
+  goals_scored_per_tournament: number;
+  goals_conceded_per_tournament: number;
+  goals_scored_per_match: number;
+  goals_conceded_per_match: number;
+  appearances_score?: number;
+  titles_score?: number;
+  finals_score?: number;
+  semi_finals_score?: number;
+  win_rate_score?: number;
+  historical_strength_score?: number;
+};

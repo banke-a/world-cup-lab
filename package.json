@@ -2,9 +2,12 @@
   "name": "world-cup-prediction-lab",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:current-strength": "node scripts/build-current-strength.ts",
+    "build:features": "node scripts/build-worldcup-features.ts",
     "start": "next start",
     "lint": "eslint"
   },

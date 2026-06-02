@@ -1,0 +1,245 @@
+{
+  "accessedDate": "2026-06-02",
+  "inventory": [
+    {
+      "file": "tournaments.csv",
+      "sourceUrl": "https://datahub.io/football/worldcup/_r/-/tournaments.csv",
+      "rowCount": 30,
+      "columnCount": 18,
+      "columns": [
+        "key_id",
+        "tournament_id",
+        "tournament_name",
+        "year",
+        "start_date",
+        "end_date",
+        "host_country",
+        "winner",
+        "host_won",
+        "count_teams",
+        "group_stage",
+        "second_group_stage",
+        "final_round",
+        "round_of_16",
+        "quarter_finals",
+        "semi_finals",
+        "third_place_match",
+        "final"
+      ],
+      "primaryKey": [
+        "tournament_id"
+      ],
+      "primaryKeyUnique": true,
+      "missingRequiredColumns": [],
+      "emptyRequiredValues": {
+        "tournament_id": 0,
+        "tournament_name": 0,
+        "year": 0,
+        "winner": 0,
+        "count_teams": 0
+      },
+      "relationships": [],
+      "byteSize": 3287
+    },
+    {
+      "file": "teams.csv",
+      "sourceUrl": "https://datahub.io/football/worldcup/_r/-/teams.csv",
+      "rowCount": 88,
+      "columnCount": 14,
+      "columns": [
+        "key_id",
+        "team_id",
+        "team_name",
+        "team_code",
+        "mens_team",
+        "womens_team",
+        "federation_name",
+        "region_name",
+        "confederation_id",
+        "confederation_name",
+        "confederation_code",
+        "mens_team_wikipedia_link",
+        "womens_team_wikipedia_link",
+        "federation_wikipedia_link"
+      ],
+      "primaryKey": [
+        "team_id"
+      ],
+      "primaryKeyUnique": true,
+      "missingRequiredColumns": [],
+      "emptyRequiredValues": {
+        "team_id": 0,
+        "team_name": 0,
+        "team_code": 0,
+        "confederation_code": 0
+      },
+      "relationships": [],
+      "byteSize": 24772
+    },
+    {
+      "file": "matches.csv",
+      "sourceUrl": "https://datahub.io/football/worldcup/_r/-/matches.csv",
+      "rowCount": 1248,
+      "columnCount": 37,
+      "columns": [
+        "key_id",
+        "tournament_id",
+        "tournament_name",
+        "match_id",
+        "match_name",
+        "stage_name",
+        "group_name",
+        "group_stage",
+        "knockout_stage",
+        "replayed",
+        "replay",
+        "match_date",
+        "match_time",
+        "stadium_id",
+        "stadium_name",
+        "city_name",
+        "country_name",
+        "home_team_id",
+        "home_team_name",
+        "home_team_code",
+        "away_team_id",
+        "away_team_name",
+        "away_team_code",
+        "score",
+        "home_team_score",
+        "away_team_score",
+        "home_team_score_margin",
+        "away_team_score_margin",
+        "extra_time",
+        "penalty_shootout",
+        "score_penalties",
+        "home_team_score_penalties",
+        "away_team_score_penalties",
+        "result",
+        "home_team_win",
+        "away_team_win",
+        "draw"
+      ],
+      "primaryKey": [
+        "match_id"
+      ],
+      "primaryKeyUnique": true,
+      "missingRequiredColumns": [],
+      "emptyRequiredValues": {
+        "match_id": 0,
+        "tournament_id": 0,
+        "home_team_id": 0,
+        "away_team_id": 0,
+        "home_team_score": 0,
+        "away_team_score": 0
+      },
+      "relationships": [
+        {
+          "name": "matches.csv.tournament_id -> tournaments.tournament_id",
+          "field": "tournament_id",
+          "references": "tournaments.tournament_id",
+          "missingReferenceCount": 0
+        },
+        {
+          "name": "matches.home_team_id -> teams.team_id",
+          "field": "home_team_id",
+          "references": "teams.team_id",
+          "missingReferenceCount": 0
+        },
+        {
+          "name": "matches.away_team_id -> teams.team_id",
+          "field": "away_team_id",
+          "references": "teams.team_id",
+          "missingReferenceCount": 0
+        }
+      ],
+      "byteSize": 298930
+    },
+    {
+      "file": "tournament_standings.csv",
+      "sourceUrl": "https://datahub.io/football/worldcup/_r/-/tournament_standings.csv",
+      "rowCount": 120,
+      "columnCount": 7,
+      "columns": [
+        "key_id",
+        "tournament_id",
+        "tournament_name",
+        "position",
+        "team_id",
+        "team_name",
+        "team_code"
+      ],
+      "primaryKey": [
+        "tournament_id",
+        "position"
+      ],
+      "primaryKeyUnique": true,
+      "missingRequiredColumns": [],
+      "emptyRequiredValues": {
+        "tournament_id": 0,
+        "position": 0,
+        "team_id": 0,
+        "team_name": 0
+      },
+      "relationships": [
+        {
+          "name": "tournament_standings.csv.tournament_id -> tournaments.tournament_id",
+          "field": "tournament_id",
+          "references": "tournaments.tournament_id",
+          "missingReferenceCount": 0
+        },
+        {
+          "name": "tournament_standings.csv.team_id -> teams.team_id",
+          "field": "team_id",
+          "references": "teams.team_id",
+          "missingReferenceCount": 0
+        }
+      ],
+      "byteSize": 6965
+    },
+    {
+      "file": "qualified_teams.csv",
+      "sourceUrl": "https://datahub.io/football/worldcup/_r/-/qualified_teams.csv",
+      "rowCount": 625,
+      "columnCount": 8,
+      "columns": [
+        "key_id",
+        "tournament_id",
+        "tournament_name",
+        "team_id",
+        "team_name",
+        "team_code",
+        "count_matches",
+        "performance"
+      ],
+      "primaryKey": [
+        "tournament_id",
+        "team_id"
+      ],
+      "primaryKeyUnique": true,
+      "missingRequiredColumns": [],
+      "emptyRequiredValues": {
+        "tournament_id": 0,
+        "team_id": 0,
+        "team_name": 0,
+        "count_matches": 0,
+        "performance": 0
+      },
+      "relationships": [
+        {
+          "name": "qualified_teams.csv.tournament_id -> tournaments.tournament_id",
+          "field": "tournament_id",
+          "references": "tournaments.tournament_id",
+          "missingReferenceCount": 0
+        },
+        {
+          "name": "qualified_teams.csv.team_id -> teams.team_id",
+          "field": "team_id",
+          "references": "teams.team_id",
+          "missingReferenceCount": 0
+        }
+      ],
+      "byteSize": 44266
+    }
+  ]
+}

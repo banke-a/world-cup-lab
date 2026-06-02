@@ -1,0 +1,6 @@
+file,row_count,column_count,byte_size,primary_key,primary_key_unique,missing_required_columns,relationship_failures
+tournaments.csv,30,18,3287,tournament_id,true,,
+teams.csv,88,14,24772,team_id,true,,
+matches.csv,1248,37,298930,match_id,true,,
+tournament_standings.csv,120,7,6965,tournament_id + position,true,,
+qualified_teams.csv,625,8,44266,tournament_id + team_id,true,,
