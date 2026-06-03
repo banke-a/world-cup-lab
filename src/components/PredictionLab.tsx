@@ -17,6 +17,15 @@ type ScatterTeam = {
   historical_strength_score: number;
   current_strength_score: number | null;
   recent_record: string;
+  world_cup_appearances: number;
+  best_finish_label: string;
+  titles: number;
+  finals_appearances: number;
+  semi_final_appearances: number;
+  goals_scored: number;
+  goals_conceded: number;
+  average_goal_difference: number | null;
+  is_2026_host: number;
 };
 
 const defaultPrediction: UserPrediction = {
@@ -119,21 +128,21 @@ export function PredictionLab() {
         <div className="mx-auto grid max-w-6xl gap-7 px-4 py-8 sm:px-6 sm:py-10 md:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10 lg:py-14">
           <div className="flex min-w-0 flex-col justify-center">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#d7ead1]">
-              Historical index lab
+              Football data lab
             </p>
             <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
               2026 World Cup Lab
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 sm:text-lg">
-              A lightweight, explainable football history index derived from World Cup performance.
-              It is a data preparation step, not a prediction model.
+              Explore how World Cup records and recent international form compare across leading
+              football nations.
             </p>
             <div className="mt-7 flex flex-col gap-3 text-sm font-medium sm:flex-row sm:flex-wrap">
               <a
                 href="#predictions"
                 className="flex min-h-11 items-center justify-center rounded-md bg-[#f5c84b] px-4 py-2.5 text-[#151515] transition hover:bg-[#ffd968]"
               >
-                View historical index
+                View World Cup rankings
               </a>
               <a
                 href="#make-pick"
@@ -158,11 +167,11 @@ export function PredictionLab() {
           <div className="min-w-0 rounded-lg border border-white/18 bg-white/10 p-4 shadow-2xl shadow-black/15 backdrop-blur sm:p-5">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="min-w-0">
-                <p className="text-sm text-white/72">Top historical strength score</p>
+                <p className="text-sm text-white/72">Leading World Cup record</p>
                 <h2 className="mt-2 break-words text-3xl font-semibold">{topTeam.team_name}</h2>
               </div>
               <div className="rounded-md bg-white px-3 py-2 text-left text-[#174b3f] sm:text-right">
-                <p className="text-xs font-semibold uppercase tracking-wide">Score</p>
+                <p className="text-xs font-semibold uppercase tracking-wide">Record</p>
                 <p className="text-2xl font-bold">{topTeam.historical_strength_score}</p>
               </div>
             </div>
@@ -171,24 +180,24 @@ export function PredictionLab() {
               <Metric label="Titles" value={topTeam.titles} />
               <Metric label="Finals" value={topTeam.finals_appearances} />
               <Metric label="Semi-finals" value={topTeam.semi_final_appearances} />
-              <Metric label="Win rate" value={`${topTeam.win_rate}%`} />
-              <Metric label="Goals" value={topTeam.goals_scored} />
+              <Metric label="Win %" value={`${topTeam.win_rate}%`} />
+              <Metric label="Goals for" value={topTeam.goals_scored} />
             </dl>
             <div className="mt-6 rounded-md bg-white/12 p-4">
-              <p className="text-sm text-white/68">Current form leader</p>
+              <p className="text-sm text-white/68">Current Form leader</p>
               <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div className="min-w-0">
                   <p className="text-2xl font-semibold">{currentLeader.team_name}</p>
                   <p className="mt-1 text-sm text-white/70">
-                    Recent record {currentLeader.wins}-{currentLeader.draws}-{currentLeader.losses}
+                    Form {currentLeader.wins}-{currentLeader.draws}-{currentLeader.losses}
                   </p>
                 </div>
                 <p className="text-2xl font-bold">{currentLeader.current_strength_score}</p>
               </div>
             </div>
             <p className="mt-6 rounded-md border border-[#f5c84b]/45 bg-[#f5c84b]/15 p-3 text-sm leading-6 text-[#fff4c9]">
-              For fun and education only. This is a historical football strength index, not a
-              machine-learning model, betting system, or win-probability forecast.
+              This is not a prediction model. It compares history and form using public football
+              data.
             </p>
           </div>
         </div>
@@ -198,13 +207,13 @@ export function PredictionLab() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="min-w-0">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f6d5f]">
-              Historical Strength Score
+              World Cup Record
             </p>
-            <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">Top 30 nations</h2>
+            <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">World Cup Record Rankings</h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-black/62">
-            Scores combine normalized World Cup appearances, titles, finals, semi-finals, and match
-            win rate. No current form, FIFA ranking, ELO, or prediction probability is used.
+            World Cup Record shows how much tournament history a team carries, from appearances and
+            titles to deep runs and match wins.
           </p>
         </div>
         <p className="mt-4 text-xs font-medium text-black/52 sm:hidden">
@@ -218,15 +227,16 @@ export function PredictionLab() {
                 <tr>
                   <th className="px-3 py-3 sm:px-4">Rank</th>
                   <th className="px-3 py-3 sm:px-4">Team</th>
-                  <th className="px-3 py-3 sm:px-4">Confed</th>
-                  <th className="px-3 py-3 sm:px-4">Historical Strength Score</th>
+                  <th className="px-3 py-3 sm:px-4">Confederation</th>
+                  <th className="px-3 py-3 sm:px-4">World Cup Record</th>
                   <th className="px-3 py-3 sm:px-4">Appearances</th>
                   <th className="px-3 py-3 sm:px-4">Titles</th>
                   <th className="px-3 py-3 sm:px-4">Finals</th>
-                  <th className="px-3 py-3 sm:px-4">Semis</th>
-                  <th className="px-3 py-3 sm:px-4">Win rate</th>
-                  <th className="px-3 py-3 sm:px-4">GF / GA</th>
-                  <th className="px-3 py-3 sm:px-4">Avg finish est.</th>
+                  <th className="px-3 py-3 sm:px-4">Semi-finals</th>
+                  <th className="px-3 py-3 sm:px-4">Win %</th>
+                  <th className="px-3 py-3 sm:px-4">Goals For</th>
+                  <th className="px-3 py-3 sm:px-4">Goals Against</th>
+                  <th className="px-3 py-3 sm:px-4">Average Tournament Finish</th>
                 </tr>
               </thead>
               <tbody>
@@ -254,7 +264,8 @@ export function PredictionLab() {
                     <td className="px-3 py-4 sm:px-4">{team.finals_appearances}</td>
                     <td className="px-3 py-4 sm:px-4">{team.semi_final_appearances}</td>
                     <td className="px-3 py-4 sm:px-4">{team.win_rate}%</td>
-                    <td className="px-3 py-4 sm:px-4">{team.goals_scored} / {team.goals_conceded}</td>
+                    <td className="px-3 py-4 sm:px-4">{team.goals_scored}</td>
+                    <td className="px-3 py-4 sm:px-4">{team.goals_conceded}</td>
                     <td className="px-3 py-4 sm:px-4">{team.average_finish_position_estimate}</td>
                   </tr>
                 ))}
@@ -278,17 +289,17 @@ export function PredictionLab() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div className="min-w-0">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f6d5f]">
-                Current Strength Index
+                Current Form
               </p>
-              <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">History meets recent form</h2>
+              <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">Current Form Rankings</h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-black/62">
-              Phase 1 uses each team&apos;s latest 20 completed matches, recent goal difference, and
-              a small 2026 host flag. Still no FIFA ranking, Elo rating, ML, or probabilities.
+              Current Form looks at recent international results, goals scored and goals conceded.
+              Host Boost gives Canada, Mexico and the United States a small lift as 2026 hosts.
             </p>
           </div>
           <p className="mt-4 text-xs font-medium text-black/52 sm:hidden">
-            Swipe sideways to compare the full current-strength table.
+            Swipe sideways to compare the full Current Form table.
           </p>
 
           <div className="mt-4 overflow-hidden rounded-lg border border-black/10 bg-[#fbfbf7] sm:mt-6">
@@ -297,13 +308,13 @@ export function PredictionLab() {
                 <thead className="bg-[#ece7d9] text-xs uppercase tracking-wide text-black/62">
                   <tr>
                     <th className="px-3 py-3 sm:px-4">Team</th>
-                    <th className="px-3 py-3 sm:px-4">Historical Strength Score</th>
-                    <th className="px-3 py-3 sm:px-4">Current Strength Score</th>
-                    <th className="px-3 py-3 sm:px-4">Recent form</th>
-                    <th className="px-3 py-3 sm:px-4">Recent goal difference</th>
-                    <th className="px-3 py-3 sm:px-4">Host advantage</th>
-                    <th className="px-3 py-3 sm:px-4">Record</th>
-                    <th className="px-3 py-3 sm:px-4">PPM</th>
+                    <th className="px-3 py-3 sm:px-4">World Cup Record</th>
+                    <th className="px-3 py-3 sm:px-4">Current Form</th>
+                    <th className="px-3 py-3 sm:px-4">Form</th>
+                    <th className="px-3 py-3 sm:px-4">Goal Difference</th>
+                    <th className="px-3 py-3 sm:px-4">Host Boost</th>
+                    <th className="px-3 py-3 sm:px-4">Recent Record</th>
+                    <th className="px-3 py-3 sm:px-4">Points/Match</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -325,7 +336,7 @@ export function PredictionLab() {
                           : ""}
                       </td>
                       <td className="px-3 py-4 sm:px-4">
-                        {team.is_2026_host ? "Host boost" : "None"}
+                        {team.is_2026_host ? "Host Boost" : "None"}
                       </td>
                       <td className="px-3 py-4 sm:px-4">{team.recent_record}</td>
                       <td className="px-3 py-4 sm:px-4">{team.points_per_match ?? "n/a"}</td>
@@ -348,9 +359,9 @@ export function PredictionLab() {
           <div className="mt-6 rounded-lg border border-black/10 bg-[#fbfbf7] p-4 sm:p-5">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h3 className="text-2xl font-semibold">History vs Current Form</h3>
+                <h3 className="text-2xl font-semibold">World Cup History vs Current Form</h3>
                 <p className="mt-2 max-w-2xl text-sm leading-6 text-black/62">
-                  Where does your team sit: history, form, or both?
+                  See which teams carry tournament history, recent form, or both.
                 </p>
                 <p className="mt-2 text-xs leading-5 text-black/45 sm:hidden">
                   Tip: rotate your phone for a wider view of the chart.
@@ -370,17 +381,17 @@ export function PredictionLab() {
           <div className="mt-6 grid gap-4 lg:grid-cols-3">
             <ComparisonBucket
               title="Strong in both"
-              description="Old trophy cabinet, current engine still warm."
+              description="Teams with strong tournament records and strong recent form."
               teams={comparisonBuckets.strongInBoth}
             />
             <ComparisonBucket
-              title="Historically strong, currently quieter"
-              description="Big legacy, softer recent-form signal."
+              title="World Cup giants"
+              description="Teams with major tournament pedigree but a quieter recent-form profile."
               teams={comparisonBuckets.historicalStrongCurrentWeaker}
             />
             <ComparisonBucket
-              title="Historically lighter, currently lively"
-              description="Less World Cup legacy, very punchy recent results."
+              title="In-form challengers"
+              description="Teams with a lighter World Cup record but strong recent results."
               teams={comparisonBuckets.historicalWeakerCurrentStrong}
             />
           </div>
@@ -394,12 +405,12 @@ export function PredictionLab() {
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="min-w-0">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f6d5f]">
-              Make your prediction
+              Make your tournament picks
             </p>
             <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">Choose your bracket picks</h2>
             <p className="mt-4 max-w-xl text-sm leading-6 text-black/62">
-              These picks are still stored in local React state only. They are intentionally separate
-              from the historical index and do not affect the score.
+              Make your tournament picks for fun. They stay on this page and do not affect the
+              rankings.
             </p>
           </div>
 
@@ -461,7 +472,7 @@ export function PredictionLab() {
                     {index === 0 ? "Your latest pick" : `Your pick ${index + 1}`}
                   </p>
                   <p className="mt-2 break-words text-sm leading-6 text-black/62">
-                    Winner: {item.winner} · Finalist: {item.finalist} · Semis:{" "}
+                    Winner: {item.winner} · Finalist: {item.finalist} · Semi-finalists:{" "}
                     {item.semiFinalists.join(", ")}
                   </p>
                 </div>
@@ -474,21 +485,19 @@ export function PredictionLab() {
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f6d5f]">
             Methodology
           </p>
-          <h2 className="mt-2 text-2xl font-semibold">How to read the scores</h2>
+          <h2 className="mt-2 text-2xl font-semibold">How to read the rankings</h2>
           <div className="mt-5 space-y-3 text-sm leading-6 text-black/66">
             <p>
-              The historical score rewards teams that have repeatedly gone deep at World Cups:
-              showing up often, winning titles, reaching finals and semi-finals, and winning matches.
+              World Cup Record shows how much history a team carries at the tournament: appearances,
+              titles, finals, semi-finals and match wins.
             </p>
             <p>
-              The current score is a lightweight snapshot of recent international results. It looks
-              at the last 20 matches, recent goal difference, and whether a team is one of the 2026
-              hosts.
+              Current Form looks at recent international results, goals scored and goals conceded.
+              Host Boost gives Canada, Mexico and the United States a small lift as 2026 hosts.
             </p>
             <p>
-              Germany includes West Germany under the documented normalization rules. Current
-              Strength uses recent form only, with no machine learning, FIFA ranking, Elo rating, or
-              win probability.
+              This is not a prediction model. It compares history and form using public football
+              data.
             </p>
           </div>
           <details
@@ -528,8 +537,8 @@ export function PredictionLab() {
             </div>
           </details>
           <div className="mt-6 rounded-md bg-[#f7f7f2] p-4 text-sm leading-6 text-black/66">
-            This is a historical football strength index derived from World Cup performance. It is
-            useful context for an explainable lab, but it does not predict 2026 outcomes.
+            The rankings are useful context for comparing teams, but they do not predict 2026
+            outcomes.
           </div>
         </div>
       </section>
@@ -584,7 +593,7 @@ function ScatterPlot({
         <svg
           viewBox={`0 0 ${width} ${height}`}
           role="img"
-          aria-label="Scatter plot of historical strength score against current strength score"
+          aria-label="Scatter plot of World Cup Record against Current Form"
           className="h-auto w-full"
         >
           <rect x={0} y={0} width={width} height={height} rx={8} fill="#ffffff" />
@@ -658,7 +667,7 @@ function ScatterPlot({
             textAnchor="middle"
             className="fill-[#174b3f] text-[13px] font-bold"
           >
-            Strong in both
+            Strong record, strong form
           </text>
           <text
             x={guideX + (width - padding.right - guideX) / 2}
@@ -666,7 +675,7 @@ function ScatterPlot({
             textAnchor="middle"
             className="fill-[#174b3f] text-[13px] font-bold"
           >
-            Historical heavyweights
+            World Cup giants
           </text>
           <text
             x={padding.left + (guideX - padding.left) / 2}
@@ -674,7 +683,7 @@ function ScatterPlot({
             textAnchor="middle"
             className="fill-[#174b3f] text-[13px] font-bold"
           >
-            Current risers
+            In-form challengers
           </text>
           <text
             x={padding.left + (guideX - padding.left) / 2}
@@ -706,7 +715,7 @@ function ScatterPlot({
             textAnchor="middle"
             className="fill-black/62 text-[13px] font-semibold"
           >
-            Historical Strength Score
+            World Cup Record
           </text>
           <text
             x={18}
@@ -715,7 +724,7 @@ function ScatterPlot({
             transform={`rotate(-90 18 ${padding.top + plotHeight / 2})`}
             className="fill-black/62 text-[13px] font-semibold"
           >
-            Current Strength Score
+            Current Form
           </text>
 
           {teams.map((team) => {
@@ -736,7 +745,7 @@ function ScatterPlot({
                 className="cursor-pointer transition"
                 tabIndex={0}
                 role="button"
-                aria-label={`${team.team_name}: ${category}, historical ${team.historical_strength_score}, current ${currentScore}, recent record ${team.recent_record}`}
+                aria-label={`${team.team_name}: ${category}, World Cup Record ${team.historical_strength_score}, Current Form ${currentScore}, recent record ${team.recent_record}`}
                 onMouseEnter={() => onActiveTeamChange(team.team_id)}
                 onMouseLeave={() => onActiveTeamChange(null)}
                 onFocus={() => onActiveTeamChange(team.team_id)}
@@ -753,7 +762,7 @@ function ScatterPlot({
                 }}
               >
                 <title>
-                  {`${team.team_name}: ${category}, historical ${team.historical_strength_score}, current ${currentScore}, recent record ${team.recent_record}`}
+                  {`${team.team_name}: ${category}, World Cup Record ${team.historical_strength_score}, Current Form ${currentScore}, recent record ${team.recent_record}`}
                 </title>
               </circle>
             );
@@ -781,15 +790,28 @@ function ScatterPlot({
 
       <div className="rounded-md border border-black/10 bg-white p-4">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2f6d5f]">
-          Team tooltip
+          Team profile
         </p>
         {activeTeam ? (
           <div className="mt-3 space-y-2 text-sm leading-6 text-black/66">
             <p className="break-words text-lg font-semibold text-black">{activeTeam.team_name}</p>
-            <p>Category: {activeTeamCategory}</p>
-            <p>Historical score: {activeTeam.historical_strength_score}</p>
-            <p>Current score: {activeTeam.current_strength_score ?? "n/a"}</p>
-            <p>Recent record: {activeTeam.recent_record}</p>
+            <p>Profile: {activeTeamCategory}</p>
+            <p>World Cup appearances: {activeTeam.world_cup_appearances}</p>
+            <p>Best finish: {activeTeam.best_finish_label}</p>
+            <p>Titles: {activeTeam.titles}</p>
+            <p>Finals: {activeTeam.finals_appearances}</p>
+            <p>Semi-finals: {activeTeam.semi_final_appearances}</p>
+            <p>
+              Goals for / against: {activeTeam.goals_scored} / {activeTeam.goals_conceded}
+            </p>
+            <p>Current Form: {activeTeam.current_strength_score ?? "n/a"}</p>
+            <p>
+              Goal difference:{" "}
+              {activeTeam.average_goal_difference !== null
+                ? `${activeTeam.average_goal_difference > 0 ? "+" : ""}${activeTeam.average_goal_difference}/match`
+                : "n/a"}
+            </p>
+            <p>Host Boost: {activeTeam.is_2026_host ? "Yes" : "No"}</p>
           </div>
         ) : (
           <p className="mt-3 text-sm leading-6 text-black/58">
@@ -825,15 +847,15 @@ function getTeamCategory(
   const hasHighCurrentScore = (team.current_strength_score ?? 0) >= medianCurrentScore;
 
   if (hasHighHistoricalScore && hasHighCurrentScore) {
-    return "Strong in both";
+    return "Strong record, strong form";
   }
 
   if (hasHighHistoricalScore) {
-    return "Historical heavyweights";
+    return "World Cup giants";
   }
 
   if (hasHighCurrentScore) {
-    return "Current risers";
+    return "In-form challengers";
   }
 
   return "Outside the spotlight";
@@ -877,7 +899,7 @@ function ComparisonBucket({
               </p>
             </div>
             <p className="mt-1 text-xs leading-5 text-black/58">
-              Historical {team.historical_strength_score} · Recent {team.recent_record}
+              World Cup Record {team.historical_strength_score} · Form {team.recent_record}
             </p>
           </div>
         ))}
