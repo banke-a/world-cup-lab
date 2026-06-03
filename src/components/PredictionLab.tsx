@@ -318,7 +318,7 @@ export function PredictionLab() {
                 <thead className="bg-[#ece7d9] text-xs uppercase tracking-wide text-black/62">
                   <tr>
                     <th className="px-3 py-3 sm:px-4">Team</th>
-                    <th className="px-3 py-3 sm:px-4">World Cup Record</th>
+                    <th className="px-3 py-3 sm:px-4">World Cup Rank</th>
                     <th className="px-3 py-3 sm:px-4">Current Form</th>
                     <th className="px-3 py-3 sm:px-4">Form Guide</th>
                     <th className="px-3 py-3 sm:px-4">Form</th>
@@ -335,7 +335,7 @@ export function PredictionLab() {
                         <div className="font-semibold">{team.team_name}</div>
                         <div className="text-xs text-black/50">{team.confederation_code}</div>
                       </td>
-                      <td className="px-3 py-4 font-semibold sm:px-4">{team.historical_strength_score}</td>
+                      <td className="px-3 py-4 font-semibold sm:px-4">#{team.rank}</td>
                       <td className="px-3 py-4 font-semibold sm:px-4">
                         {team.current_strength_score ?? "n/a"}
                       </td>
@@ -397,7 +397,7 @@ export function PredictionLab() {
               teams={comparisonBuckets.strongInBoth}
             />
             <ComparisonBucket
-              title="World Cup giants"
+              title="Rich history, quieter form"
               description="Teams with major tournament pedigree but a quieter recent-form profile."
               teams={comparisonBuckets.historicalStrongCurrentWeaker}
             />
@@ -915,7 +915,7 @@ function getTeamCategory(
   }
 
   if (hasHighHistoricalScore) {
-    return "World Cup giants";
+    return "Rich history, quieter form";
   }
 
   if (hasHighCurrentScore) {
