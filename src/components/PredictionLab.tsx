@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { currentStrengthFormula, currentStrengthTeams } from "@/lib/current-strength";
+import { teamFormGuides } from "@/lib/form-guides";
 import { historicalStrengthFormula, historicalStrengthTeams } from "@/lib/historical-strength";
 import { trackEvent } from "@/lib/analytics";
 
@@ -17,6 +18,7 @@ type ScatterTeam = {
   historical_strength_score: number;
   current_strength_score: number | null;
   recent_record: string;
+  form_guide: string;
   world_cup_appearances: number;
   best_finish_label: string;
   titles: number;
@@ -48,9 +50,11 @@ const labeledScatterTeams = new Set([
 export function PredictionLab() {
   const combinedTeams = useMemo(() => {
     const currentByName = new Map(currentStrengthTeams.map((team) => [team.team_name, team]));
+    const formGuideByName = new Map(teamFormGuides.map((team) => [team.team_name, team]));
 
     return historicalStrengthTeams.map((historical) => {
       const current = currentByName.get(historical.team_name);
+      const formGuide = formGuideByName.get(historical.team_name);
       return {
         ...historical,
         current_strength_score: current?.current_strength_score ?? null,
@@ -60,6 +64,7 @@ export function PredictionLab() {
         host_advantage_score: current?.host_advantage_score ?? 0,
         points_per_match: current?.points_per_match ?? null,
         recent_record: current ? `${current.wins}-${current.draws}-${current.losses}` : "n/a",
+        form_guide: formGuide?.form_guide ?? "n/a",
         average_goal_difference: current?.average_goal_difference ?? null,
         is_2026_host: current?.is_2026_host ?? 0,
       };
@@ -94,6 +99,8 @@ export function PredictionLab() {
   const [hasTrackedMethodologyExpanded, setHasTrackedMethodologyExpanded] = useState(false);
   const [showAllHistoricalTeams, setShowAllHistoricalTeams] = useState(false);
   const [showAllCurrentTeams, setShowAllCurrentTeams] = useState(false);
+  const [comparisonTeamA, setComparisonTeamA] = useState("Argentina");
+  const [comparisonTeamB, setComparisonTeamB] = useState("France");
 
   const teamNames = rankedTeams.map((team) => team.team_name);
   const topTeam = rankedTeams[0];
@@ -103,6 +110,9 @@ export function PredictionLab() {
   const visibleCurrentTeams = showAllCurrentTeams
     ? currentStrengthTableTeams
     : currentStrengthTableTeams.slice(0, 10);
+  const teamA = rankedTeams.find((team) => team.team_name === comparisonTeamA) ?? rankedTeams[0];
+  const teamB = rankedTeams.find((team) => team.team_name === comparisonTeamB) ?? rankedTeams[1];
+  const comparisonSummary = buildComparisonSummary(teamA, teamB);
   const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL;
 
   function updateSemiFinalist(index: number, value: string) {
@@ -310,6 +320,7 @@ export function PredictionLab() {
                     <th className="px-3 py-3 sm:px-4">Team</th>
                     <th className="px-3 py-3 sm:px-4">World Cup Record</th>
                     <th className="px-3 py-3 sm:px-4">Current Form</th>
+                    <th className="px-3 py-3 sm:px-4">Form Guide</th>
                     <th className="px-3 py-3 sm:px-4">Form</th>
                     <th className="px-3 py-3 sm:px-4">Goal Difference</th>
                     <th className="px-3 py-3 sm:px-4">Host Boost</th>
@@ -328,6 +339,7 @@ export function PredictionLab() {
                       <td className="px-3 py-4 font-semibold sm:px-4">
                         {team.current_strength_score ?? "n/a"}
                       </td>
+                      <td className="px-3 py-4 font-semibold tracking-wide sm:px-4">{team.form_guide}</td>
                       <td className="px-3 py-4 sm:px-4">{team.recent_form_score ?? "n/a"}</td>
                       <td className="px-3 py-4 sm:px-4">
                         {team.recent_goal_difference_score ?? "n/a"}
@@ -395,6 +407,45 @@ export function PredictionLab() {
               teams={comparisonBuckets.historicalWeakerCurrentStrong}
             />
           </div>
+
+          <section className="mt-6 rounded-lg border border-black/10 bg-[#fbfbf7] p-4 sm:p-5">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f6d5f]">
+                  Team Comparison
+                </p>
+                <h3 className="mt-2 text-2xl font-semibold">Compare two teams</h3>
+              </div>
+              <p className="max-w-xl text-sm leading-6 text-black/62">
+                Compare World Cup record, current form and the last five completed international
+                results before the 2026 World Cup.
+              </p>
+            </div>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              <SelectField
+                label="First team"
+                value={comparisonTeamA}
+                options={teamNames}
+                onChange={setComparisonTeamA}
+              />
+              <SelectField
+                label="Second team"
+                value={comparisonTeamB}
+                options={teamNames}
+                onChange={setComparisonTeamB}
+              />
+            </div>
+
+            <div className="mt-5 grid gap-4 lg:grid-cols-2">
+              <TeamComparisonCard team={teamA} />
+              <TeamComparisonCard team={teamB} />
+            </div>
+
+            <p className="mt-5 rounded-md bg-white p-4 text-sm leading-6 text-black/66">
+              {comparisonSummary}
+            </p>
+          </section>
         </div>
       </section>
 
@@ -496,6 +547,10 @@ export function PredictionLab() {
               Host Boost gives Canada, Mexico and the United States a small lift as 2026 hosts.
             </p>
             <p>
+              Form Guide shows each team&apos;s last five completed international results as W, D or L.
+              Team Comparison puts two sides next to each other using the same public data.
+            </p>
+            <p>
               This is not a prediction model. It compares history and form using public football
               data.
             </p>
@@ -533,6 +588,14 @@ export function PredictionLab() {
                 <code className="mt-2 block overflow-x-auto whitespace-pre-wrap break-words rounded-md bg-white p-3 text-xs leading-5 text-black/72">
                   {currentStrengthFormula}
                 </code>
+              </div>
+              <div>
+                <p className="font-semibold text-black/76">Form Guide and Team Comparison</p>
+                <p className="mt-1">
+                  Form Guide uses the same international results source as Current Form, filtered to
+                  completed senior matches through June 2, 2026. Team Comparison does not create a
+                  new score; it places existing World Cup Record and Current Form fields side by side.
+                </p>
               </div>
             </div>
           </details>
@@ -796,6 +859,7 @@ function ScatterPlot({
           <div className="mt-3 space-y-2 text-sm leading-6 text-black/66">
             <p className="break-words text-lg font-semibold text-black">{activeTeam.team_name}</p>
             <p>Profile: {activeTeamCategory}</p>
+            <p>Form Guide: {activeTeam.form_guide}</p>
             <p>World Cup appearances: {activeTeam.world_cup_appearances}</p>
             <p>Best finish: {activeTeam.best_finish_label}</p>
             <p>Titles: {activeTeam.titles}</p>
@@ -861,6 +925,99 @@ function getTeamCategory(
   return "Outside the spotlight";
 }
 
+function TeamComparisonCard({
+  team,
+}: {
+  team: {
+    team_name: string;
+    world_cup_appearances: number;
+    titles: number;
+    finals_appearances: number;
+    semi_final_appearances: number;
+    best_finish_label: string;
+    goals_scored: number;
+    goals_conceded: number;
+    win_rate: number;
+    historical_strength_score: number;
+    current_strength_score: number | null;
+    form_guide: string;
+  };
+}) {
+  return (
+    <div className="rounded-lg border border-black/10 bg-white p-4">
+      <h4 className="break-words text-xl font-semibold">{team.team_name}</h4>
+      <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+        <StatItem label="World Cup appearances" value={team.world_cup_appearances} />
+        <StatItem label="World Cup titles" value={team.titles} />
+        <StatItem label="Finals appearances" value={team.finals_appearances} />
+        <StatItem label="Semi-final appearances" value={team.semi_final_appearances} />
+        <StatItem label="Best finish" value={team.best_finish_label} />
+        <StatItem label="Goals For" value={team.goals_scored} />
+        <StatItem label="Goals Against" value={team.goals_conceded} />
+        <StatItem label="Win %" value={`${team.win_rate}%`} />
+        <StatItem label="World Cup Record" value={team.historical_strength_score} />
+        <StatItem label="Current Form" value={team.current_strength_score ?? "n/a"} />
+        <StatItem label="Form Guide" value={team.form_guide} />
+      </dl>
+    </div>
+  );
+}
+
+function StatItem({ label, value }: { label: string; value: number | string }) {
+  return (
+    <div className="rounded-md bg-[#f7f7f2] p-3">
+      <dt className="text-xs font-medium uppercase tracking-[0.12em] text-black/50">{label}</dt>
+      <dd className="mt-1 break-words font-semibold text-black/82">{value}</dd>
+    </div>
+  );
+}
+
+function buildComparisonSummary(
+  teamA: {
+    team_name: string;
+    historical_strength_score: number;
+    current_strength_score: number | null;
+  },
+  teamB: {
+    team_name: string;
+    historical_strength_score: number;
+    current_strength_score: number | null;
+  },
+) {
+  const recordGap = teamA.historical_strength_score - teamB.historical_strength_score;
+  const formGap = (teamA.current_strength_score ?? 0) - (teamB.current_strength_score ?? 0);
+  const recordLeader =
+    Math.abs(recordGap) < 3
+      ? null
+      : recordGap > 0
+        ? teamA.team_name
+        : teamB.team_name;
+  const formLeader =
+    Math.abs(formGap) < 3
+      ? null
+      : formGap > 0
+        ? teamA.team_name
+        : teamB.team_name;
+
+  if (recordLeader && formLeader && recordLeader === formLeader) {
+    return `${recordLeader} hold the stronger World Cup record and the stronger Current Form profile in this comparison.`;
+  }
+
+  if (recordLeader && formLeader) {
+    return `${recordLeader} carry the stronger World Cup record, while ${formLeader} enter with stronger recent form.`;
+  }
+
+  if (recordLeader) {
+    return `${recordLeader} carry the stronger World Cup record, while recent form is broadly similar.`;
+  }
+
+  if (formLeader) {
+    return `The World Cup record is broadly similar, while ${formLeader} show the stronger recent form.`;
+  }
+
+  return `${teamA.team_name} and ${teamB.team_name} are closely matched across World Cup record and recent form.`;
+}
+
 function Metric({ label, value }: { label: string; value: number | string }) {
   return (
     <div className="min-w-0 rounded-md bg-white/12 p-3">
@@ -883,6 +1040,7 @@ function ComparisonBucket({
     historical_strength_score: number;
     current_strength_score: number | null;
     recent_record: string;
+    form_guide: string;
   }>;
 }) {
   return (
@@ -899,7 +1057,7 @@ function ComparisonBucket({
               </p>
             </div>
             <p className="mt-1 text-xs leading-5 text-black/58">
-              World Cup Record {team.historical_strength_score} · Form {team.recent_record}
+              World Cup Record {team.historical_strength_score} · Form Guide {team.form_guide}
             </p>
           </div>
         ))}
