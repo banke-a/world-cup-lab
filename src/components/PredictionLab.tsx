@@ -675,7 +675,7 @@ function ScatterPlot({
             textAnchor="middle"
             className="fill-[#174b3f] text-[13px] font-bold"
           >
-            World Cup giants
+            Rich history, quieter form
           </text>
           <text
             x={padding.left + (guideX - padding.left) / 2}
